@@ -52,14 +52,54 @@
         
         .nav-link {
             color: var(--primary);
+            /* background-color: var(--primary); */
             font-weight: 500;
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: 
+                color 0.2s,
+                box-shadow 0.2s,
+                transform 0.2s,
+                border 0.2s;
+            width: 150px;
+            height: 50px;
+            border-radius: 20px;
+            padding: 12px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px; /* espace entre l’icône et le texte */
+            cursor: pointer;
         }
-        
-        .nav-link:hover {
-            color: rgba(139, 21, 56, 0.8);
+
+        .nav-link .icon {
+            display: flex;
+            align-items: center;
+            font-size: 1.4em; /* taille de l’icône */
+            transition: transform 0.2s;
         }
+
+        .nav-link:hover .icon {
+            transform: scale(1.15) rotate(-8deg); /* effet fluide sur l’icône */
+        }
+
+        .nav-link .text {
+            flex: none;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            border: 2px solid var(--secondary);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+            transform: translateY(-2px) scale(1.04);
+            outline: none;
+        }
+
+
         
         .btn-primary {
             background-color: var(--primary);
@@ -94,6 +134,10 @@
                 display: none;
             }
         }
+
+        /* User-menu-button */
+
+        
 /* Hero Section */
         .hero {
             position: relative;

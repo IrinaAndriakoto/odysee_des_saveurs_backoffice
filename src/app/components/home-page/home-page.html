@@ -12,9 +12,6 @@
     <header>
         <div class="header-container">
             <nav>
-                <div class="logo font-pacifico">
-                    L'odyssée des saveurs
-                </div>
                 <div class="nav-links md-flex">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#menu" class="nav-link">Menu</a>
@@ -22,11 +19,23 @@
                     <!-- <a href="#about" class="nav-link">About Us</a> -->
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
-                <a href="#reservations" class="nav-link">
-                        <button class="btn-primary">
-                        Book a table
+                <div class="logo font-pacifico">
+                    L'odyssée des saveurs
+                </div>
+                <button class="nav-link" [matMenuTriggerFor]="userMenu">
+                    <span><mat-icon class="icon">account_circle</mat-icon></span>
+                    <span>{{loginService.user()?.username}}</span>
                     </button>
-                </a>
+                    <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item (click)="navigateToProfile()">
+                        <mat-icon>person</mat-icon>
+                        Profil
+                    </button>
+                    <button mat-menu-item (click)="onLogout()">
+                        <mat-icon>logout</mat-icon>
+                        Logout
+                    </button>
+                    </mat-menu>
                 <button class="mobile-menu-btn md-hidden">
                     <i class="ri-menu-line ri-lg"></i>
                 </button>
