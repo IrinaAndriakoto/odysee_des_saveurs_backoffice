@@ -1,55 +1,49 @@
 ##### **CONCEPTION** : 
 
-nb: 
+**TODO :** 
+- CRUD
+---
+
+**nb:** 
 Isaky ny reservation confirmé de mi assigner table en fonction an'ny nb place sy ny date ( select from reservation where table != dispo on date choisie ) 
 
 
 
-###### **Users** {
+**Users : id, firstname, lastname, username, password**
 
-&nbsp;	firstname, lastname, username, password
 
-}
 
-###### **dishes** { 
+**Personnel : id, nom, prenom, adresse, numero\_tel, salaire, date\_embauche, photo, rôle**
 
-&nbsp;	desc , img , nom , prix
 
-}
 
-###### **Reservations** { 
+**Table : idtable, nom\_table, nb\_place, dispo**
 
-&nbsp;	...
 
-}
 
-###### **Avis** {
+**Dishes : id, nom, description, image, prix, dispo**
 
-&nbsp;	date publication, emailuser, username, avis
 
-}
 
-###### **Stock {**
+**Commande : idcommande, id\_table, id\_user, date, status**
 
-	id, produit\_nom, quantite, date\_insertion, 
 
-**}**
 
-**Personnel {**
+**Commande\_Dishes : id\_commande, id\_dish, quantite, prix**
 
-	nom,prenom,adresse,num,salaire,,date\_embauche,photo
 
-**}**
 
-**Table{**
+**Reservation : idreservation, id\_user, id\_table, date, status**
 
-	idtable, table, nb\_place, dispo(bool)
 
-**}**
 
-**Commandes {**
+**Avis : id\_avis, id\_dish, id\_user, date\_pub, commentaire, note**
 
-	idcommande, num\_table, dishes\[ ] ( Mamoaka prix anaovana stats )
 
-**}**
+
+**Stock : id, produit\_nom, quantite, date\_insertion**
+
+
+
+**Media : id, chemin, type, id\_liant (utilisé pour images associées à autre entité)**
 
