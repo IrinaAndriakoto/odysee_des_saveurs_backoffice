@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+</head>
+    <header>
+        <div class="header-container">
+            <nav>
+                <div class="logo font-pacifico">
+                    L'odyssée des saveurs
+                </div>
+                <div class="nav-links md-flex">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <!-- <a href="#reservations" class="nav-link">Reservations</a> -->
+                    <!-- <a href="#about" class="nav-link">About Us</a> -->
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                <a href="#reservations" class="nav-link">
+                        <button class="btn-primary">
+                        Book a table
+                    </button>
+                </a>
+                <button class="mobile-menu-btn md-hidden">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+<main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title font-playfair">
+                        Experience Fine French Cuisine
+                    </h1>
+                    <p class="hero-subtitle">
+                        Where culinary artistry meets timeless elegance in the heart of the city
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#menu">
+                            <button class="hero-btn btn-primary-lg">
+                                View Our Menu
+                            </button>
+                        </a>
+                        <a href="#reservations">
+                            <button class="hero-btn btn-secondary-lg">
+                                Make Reservation
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="w-8 h-8 flex items-center justify-center text-secondary">
+                    <i class="ri-arrow-down-line ri-lg"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="section bg-white">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2 class="section-title font-playfair">
+                        Featured Dishes
+                    </h2>
+                    <p class="section-subtitle">
+                        Discover our chef's signature creations, crafted with the finest ingredients and French culinary traditions
+                    </p>
+                </div>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/coq-au-vin.jpg" 
+                                 alt="Coq au Vin">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Coq au Vin</h3>
+                            <p class="menu-card-desc">Traditional French chicken braised in red wine with pearl onions, mushrooms, and aromatic herbs</p>
+                            <div class="menu-card-price">$34</div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/beef-bourguignon.jpg" 
+                                 alt="Beef Bourguignon">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Beef Bourguignon</h3>
+                            <p class="menu-card-desc">Slow-braised beef in burgundy wine with carrots, onions, and fresh thyme, served with creamy mashed potatoes</p>
+                            <div class="menu-card-price">$42</div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/Bouillabaisse.jpg" 
+                                 alt="Bouillabaisse">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Bouillabaisse</h3>
+                            <p class="menu-card-desc">Mediterranean seafood stew with fresh fish, mussels, and prawns in saffron-infused broth</p>
+                            <div class="menu-card-price">$48</div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/Duck-Confit.jpg" 
+                                 alt="Duck Confit">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Duck Confit</h3>
+                            <p class="menu-card-desc">Slow-cooked duck leg with crispy skin, served with roasted seasonal vegetables and cherry gastrique</p>
+                            <div class="menu-card-price">$38</div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/Lobster-Thermidor.jpg" 
+                                 alt="Lobster Thermidor">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Lobster Thermidor</h3>
+                            <p class="menu-card-desc">Fresh lobster in creamy cognac sauce with gruyère cheese, gratinated to perfection</p>
+                            <div class="menu-card-price">$65</div>
+                        </div>
+                    </div>
+                    <div class="menu-card">
+                        <div class="menu-card-img">
+                            <img src="/img/menu/Tarte-Tatin.jpg" 
+                                 alt="Tarte Tatin">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3 class="menu-card-title font-playfair">Tarte Tatin</h3>
+                            <p class="menu-card-desc">Classic upside-down apple tart with caramelized apples and buttery pastry, served with vanilla ice cream</p>
+                            <div class="menu-card-price">$16</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="about" class="section about-section">
+            <div class="about-container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="about-title font-playfair">
+                            Our Story
+                        </h2>
+                        <p class="about-text">
+                            Founded in 1985 by Chef Antoine Dubois, Bistro Rouge has been a cornerstone of fine French dining in our city for nearly four decades. Our commitment to authentic French cuisine and exceptional service has earned us recognition from food critics and loyal patrons alike.
+                        </p>
+                        <p class="about-text">
+                            Every dish is prepared with meticulous attention to detail, using only the finest ingredients sourced from local farms and trusted suppliers. Our wine cellar features an extensive collection of French wines, carefully selected to complement our seasonal menu.
+                        </p>
+                        <p class="about-text">
+                            Step into our warm and inviting dining room, where the ambiance of old-world charm meets modern sophistication, creating the perfect setting for memorable dining experiences.
+                        </p>
+                    </div>
+                    <div class="about-img">
+                        <img src="https://readdy.ai/api/search-image?query=sophisticated%20french%20restaurant%20interior%20with%20chef%20Antoine%20Dubois%20in%20traditional%20white%20chef%20uniform%2C%20elegant%20dining%20room%20with%20deep%20red%20accents%2C%20cream%20colored%20walls%2C%20vintage%20wine%20bottles%2C%20warm%20ambient%20lighting%20and%20classic%20french%20bistro%20atmosphere&width=600&height=400&seq=about001&orientation=landscape" 
+                             alt="Chef Antoine Dubois">
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section id="reservations" class="section bg-white">
+            <div class="reservations-container">
+                <div class="text-center mb-12">
+                    <h2 class="section-title font-playfair">
+                        Make a Reservation
+                    </h2>
+                    <p class="section-subtitle">
+                        Reserve your table for an unforgettable dining experience
+                    </p>
+                </div>
+                <div class="reservations-form-container">
+                    <form class="reservations-form">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Party Size</label>
+                            <div class="dropdown">
+                                <select name="" id="" class="dropdown-btn">
+                                    <option value="#">--</option>
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="5">5 People</option>
+                                    <option value="6">6+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Preferred Date</label>
+                            <input type="date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Preferred Time</label>
+                            <input type="time" class="form-input">
+                        </div>
+                        <div class="form-group md-col-span-2">
+                            <label class="form-label">Special Requests</label>
+                            <textarea class="form-textarea" placeholder="Any dietary restrictions or special occasions?"></textarea>
+                        </div>
+                        <div class="form-group md-col-span-2" style="margin-top:29px;">
+                            <button type="submit" class="form-submit">
+                                Confirm Reservation
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">L'odyssée des saveurs</div>
+                    <p class="footer-text">
+                        Experience the finest French cuisine in an elegant atmosphere that celebrates culinary artistry and tradition.
+                    </p>
+                    <div class="footer-social">
+                        <div class="social-icon">
+                            <i class="ri-facebook-fill"></i>
+                        </div>
+                        <div class="social-icon">
+                            <i class="ri-instagram-line"></i>
+                        </div>
+                        <div class="social-icon">
+                            <i class="ri-twitter-line"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contact Info</h3>
+                    <div class="space-y-3 text-white/80">
+                        <div class="footer-contact-item">
+                            <div class="footer-icon">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>123 Gourmet Street<br>Downtown District, NY 10001</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-icon">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-icon">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span>reservationsbistrorouge.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Opening Hours</h3>
+                    <div class="space-y-2 text-white/80">
+                        <div class="footer-hours-item">
+                            <span>Monday - Thursday</span>
+                            <span>5:00 PM - 10:00 PM</span>
+                        </div>
+                        <div class="footer-hours-item">
+                            <span>Friday - Saturday</span>
+                            <span>5:00 PM - 11:00 PM</span>
+                        </div>
+                        <div class="footer-hours-item">
+                            <span>Sunday</span>
+                            <span>4:00 PM - 9:00 PM</span>
+                        </div>
+                        <div class="footer-hours-note">
+                            <span>Closed on major holidays</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div>
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-text">Subscribe to receive updates on seasonal menus and special events.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button class="newsletter-btn">
+                            Subscribe
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+            <div class="footer-divider">
+                <p>&copy; 2025 L'odyssée des saveurs. All rights reserved. | <a href="" class="href-privacy-terms"> Privacy Policy </a> |  <a href="" class="href-privacy-terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const headerHeight = 80;
+                        const targetPosition = targetSection.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Party Size Dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const partySizeBtn = document.getElementById('partySizeBtn');
+            const partySizeDropdown = document.getElementById('partySizeDropdown');
+            const partySizeText = document.getElementById('partySizeText');
+            
+            partySizeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                partySizeDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!partySizeBtn.contains(e.target)) {
+                    partySizeDropdown.classList.remove('show');
+                }
+            });
+            
+            const dropdownOptions = partySizeDropdown.querySelectorAll('button[data-value]');
+            dropdownOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    partySizeText.textContent = this.textContent;
+                    partySizeDropdown.classList.remove('show');
+                });
+            });
+        });
+
+        // Mobile Menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('show');
+                });
+            }
+        });
+    </script>
