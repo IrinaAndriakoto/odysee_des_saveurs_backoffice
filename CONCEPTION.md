@@ -25,6 +25,10 @@ Isaky ny reservation confirmé de mi assigner table en fonction an'ny nb place s
 
 
 
+**Reservation : idreservation, id\_user, id\_table, date, status**
+
+
+
 **Commande : idcommande, id\_table, id\_user, date, status**
 
 
@@ -33,15 +37,11 @@ Isaky ny reservation confirmé de mi assigner table en fonction an'ny nb place s
 
 
 
-**Reservation : idreservation, id\_user, id\_table, date, status**
+**Stock : id, produit\_nom, quantite, date\_insertion**
 
 
 
 **Avis : id\_avis, id\_dish, id\_user, date\_pub, commentaire, note**
-
-
-
-**Stock : id, produit\_nom, quantite, date\_insertion**
 
 
 
