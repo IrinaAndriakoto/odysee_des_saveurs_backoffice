@@ -1,0 +1,10 @@
+@if(loginService.user()) {
+    <app-header></app-header> 
+    <p>Home page</p>
+} @else{
+    <div class="user-not-logged-in">
+        <p>User is not logged in</p>
+        <p>Please log in to access the home page.</p>
+        <button matButton="filled" (click)="navigateToLogin()">Go to Login</button>
+    </div>
+}

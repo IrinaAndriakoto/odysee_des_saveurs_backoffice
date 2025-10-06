@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './components/home-page/home-page';
-import { authInterceptor } from './interceptors/auth-interceptor';
+import { HomePage } from './pages/home-page/home-page';
 import { Login } from './pages/login/login';
 import { Register } from './pages/register/register/register';
 import { isLoggedInGuard } from './guards/is-logged-in-guard';
+import { Profile } from './pages/profile/profile/profile';
 
 export const routes: Routes = [
     {   
@@ -19,6 +19,10 @@ export const routes: Routes = [
     },{
         path: 'home',
         component: HomePage,
+        canActivate: [isLoggedInGuard]
+    }, {
+        path:'profile',
+        component: Profile,
         canActivate: [isLoggedInGuard]
     }
 ];

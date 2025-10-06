@@ -1,0 +1,12 @@
+.user-not-logged-in{
+    width: fit-content;
+    top: 35%;
+    left: 0;
+    right: 0;
+    margin-top: 100px;
+    position: absolute;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    margin: auto;
+}

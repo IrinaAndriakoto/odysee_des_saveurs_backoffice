@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+</head>
+    <header>
+        <div class="header-container">
+            <nav>
+                <div class="logo font-pacifico">
+                    L'odyssée des saveurs
+                </div>
+                <button class="nav-link" [matMenuTriggerFor]="userMenu">
+                    <span><mat-icon class="icon_username">account_circle</mat-icon></span>
+                    <span>{{loginService.user()?.username}}</span>
+                </button>
+                    <mat-menu class="custom-menu" #userMenu="matMenu">
+                    <button mat-menu-item class="custom-menu-item" (click)="navigateToProfile()">
+                        <mat-icon>person</mat-icon>
+                        Profil
+                    </button>
+                    <button mat-menu-item style="margin-top : 4px !important;" class="custom-menu-item" (click)="onLogout()">
+                        <mat-icon>logout</mat-icon>
+                        Logout
+                    </button>
+                    </mat-menu>
+                <!-- <button class="mobile-menu-btn md-hidden">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button> -->
+            </nav>
+        </div>
+    </header>

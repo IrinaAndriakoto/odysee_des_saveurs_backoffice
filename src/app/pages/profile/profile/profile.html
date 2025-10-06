@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container">
+    @if(loginService.user()){
+    <div class="profile-container">
+        <form>
+        <h3>User informations</h3>
+        <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput value="{{ loginService.user()?.firstName}}">
+        </mat-form-field> <br>
+        <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input matInput value="{{ loginService.user()?.lastName}}">
+        </mat-form-field> <br>
+        <button matButton="filled" color="primary" (click)="navigateToHome()">Back</button>
+        </form>
+    </div>
+}
+@else {
+    <div class="profile-container">
+        <p>User is not logged in</p>
+        <p>Please log in to view your profile.</p>
+        <button class="mat-btn-profile" matButton="filled" (click)="navigateToHome()">Back</button>
+    </div>
+}
+</div>

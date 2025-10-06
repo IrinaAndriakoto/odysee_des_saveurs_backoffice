@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { UserModel } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable, tap, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -28,13 +28,16 @@ export class LoginService {
     return this.http.post(`${this.BASE_URL}/auth/register`, user);
   }
 
-  // Se connecter et sauvegarder le token
+  // Se connecter et sauvegarder le token, puis récupérer le user connecté
   login(credentials: {username: string; password: string}) {
     return this.http.post<{ token: string}> (`${this.BASE_URL}/auth/login`, credentials)
     .pipe(
       tap(response => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/home']);
+      }),
+      switchMap(() => this.getUser()), // récupère le user et met à jour le signal
+      tap(() => {
+        this.router.navigate(['/home']); // navigation après récupération user
       })
     );
   }
