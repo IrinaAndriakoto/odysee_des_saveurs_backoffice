@@ -1,0 +1,55 @@
+<section class="section-nav-hp-links">
+    <div class="logo font-pacifico">
+                    L'odyssée des saveurs
+        </div>
+  <mat-nav-list>
+    <h3 mat-subheader>Dashboard</h3>
+
+    <mat-list-item routerLink="/stats" routerLinkActive="active">
+      <mat-icon matListIcon>bar_chart</mat-icon>
+      <span matLine>Statistics</span>
+    </mat-list-item>
+
+    <mat-divider></mat-divider>
+
+    <h3 mat-subheader>Management</h3>
+
+    <mat-list-item routerLink="/home/hr-fr" routerLinkActive="active">
+      <mat-icon matListIcon>people</mat-icon>
+      <span matLine>HR & FR</span>
+    </mat-list-item>
+
+    <mat-list-item routerLink="/reservations" routerLinkActive="active">
+      <mat-icon matListIcon>book_online</mat-icon>
+      <span matLine>Reservations</span>
+    </mat-list-item>
+
+    <mat-list-item routerLink="/orders" routerLinkActive="active">
+      <mat-icon matListIcon>receipt_long</mat-icon>
+      <span matLine>Orders</span>
+    </mat-list-item>
+
+    <mat-list-item routerLink="/dishes" routerLinkActive="active">
+      <mat-icon matListIcon>restaurant_menu</mat-icon>
+      <span matLine>Dishes & Stocks</span>
+    </mat-list-item>
+  </mat-nav-list>
+</section>
+<section class="section-nav-hp-user">
+    <button class="nav-link" [matMenuTriggerFor]="userMenu">
+            <span><mat-icon class="icon_username">account_circle</mat-icon></span>
+            <span>{{loginService.user()?.username}}</span>
+    </button>
+    <mat-menu class="custom-menu" #userMenu="matMenu">
+        <button mat-menu-item class="custom-menu-item" (click)="navigateToProfile()">
+            <mat-icon>person</mat-icon>
+                Profil
+        </button>
+        <button mat-menu-item style="margin-top : 4px !important;" class="custom-menu-item" (click)="onLogout()">
+            <mat-icon>logout</mat-icon>
+            Logout
+        </button>
+        </mat-menu>
+</section>
+
+

@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { UserModel } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable, tap, switchMap } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { tap, switchMap, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -43,11 +44,10 @@ export class LoginService {
   }
 
   getUser(): Observable<UserModel | null> {
-    return this.http.get<UserModel>(`${this.BASE_URL}/user/me`).pipe(
-      tap((result: UserModel) => {
-        this.user.set(result); // on stocke le user dans le signal
-      }),
-      map(() => this.user())
+    const url = `${this.BASE_URL}/user/me`;
+    return this.http.get<UserModel>(url).pipe(
+      tap(u => this.user.set(u)),
+      map(u => u ?? null)
     );
   }
 
@@ -65,4 +65,21 @@ export class LoginService {
     return localStorage.getItem('token');
   }
   
+  // appeler après login pour persister token et charger le user
+  handleLoginToken(token: string) {
+    localStorage.setItem('token', token);
+    return this.getUser(); // renvoie Observable<UserModel | null>
+  }
+
+  // restore auth au démarrage : si token présent -> getUser()
+  restoreFromStorage(): Observable<UserModel | null> {
+    const token = this.getToken();
+    if (!token) {
+      this.user.set(null);
+      return of(null);
+    }
+    return this.getUser();
+  }
+
+  // optionnel: appeler backend logout endpoint
 }

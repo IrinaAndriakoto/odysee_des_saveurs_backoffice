@@ -1,3 +1,34 @@
+
+.app-sidenav {
+  width: 240px;
+  background: var(--headercolor);
+  height: 100%;
+  padding-top: 12px;
+}
+
+.app-sidenav-container {
+  min-height: 100vh;
+}
+
+mat-list-item {
+  cursor: pointer;
+}
+
+mat-list-item.active {
+  background: rgba(107,112,255,0.08);
+}
+.top-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-content-app{
+    margin-top:100px;
+    margin-left:50px;
+    float: left;
+    width:1000px;
+}
 .user-not-logged-in{
     width: fit-content;
     top: 35%;

@@ -1,9 +1,12 @@
-<app-header></app-header>
 <div class="container">
     @if(loginService.user()){
     <div class="profile-container">
         <form>
         <h3>User informations</h3>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput value="{{ loginService.user()?.username}}">
+        </mat-form-field> <br>
         <mat-form-field>
             <mat-label>First name</mat-label>
             <input matInput value="{{ loginService.user()?.firstName}}">

@@ -1,10 +1,26 @@
 @if(loginService.user()) {
-    <app-header></app-header> 
-    <p>Home page</p>
-} @else{
-    <div class="user-not-logged-in">
-        <p>User is not logged in</p>
-        <p>Please log in to access the home page.</p>
+  <mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+      <app-navbar></app-navbar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="top-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <section class="main-content-app">
+        <router-outlet></router-outlet>
+        </section>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+} @else {
+  <div class="user-not-logged-in">
+    <p>User is not logged in</p>
+    <p>Please log in to access the home page.</p>
         <button matButton="filled" (click)="navigateToLogin()">Go to Login</button>
-    </div>
+
+  </div>
 }

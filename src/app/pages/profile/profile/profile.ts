@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Header } from '../../../components/header/header/header';
+import { Navbar } from '../../../components/navbar/navbar';
 
 @Component({
   selector: 'app-profile',
-  imports: [MatFormField,MatInputModule,MatButtonModule,Header],
+  imports: [MatFormField,MatInputModule,MatButtonModule,Navbar],
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })

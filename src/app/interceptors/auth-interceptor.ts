@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { LoginService } from '../services/login.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log('Interceptor appelé, type de req:', typeof req, req); // Debug
+  // console.log('Interceptor appelé, type de req:', typeof req, req); // Debug
   
   const loginService = inject(LoginService);
   const token = loginService.getToken();
