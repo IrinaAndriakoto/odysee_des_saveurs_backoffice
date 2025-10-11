@@ -3,18 +3,3 @@ h3{
     font-size: 1.6rem; /* avant 1.5rem */
     color: var(--primary);
 }
-
-.container {
-    position: absolute;
-    top:80px
-}
-
-.profile-container { 
-    margin-top: 20px;
-    margin-left: 50px;
-    
-}
-
-button{
-    background-color: var(--primary)
-}

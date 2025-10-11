@@ -1,123 +1,162 @@
+/* ====== SECTION LINKS ====== */
+.section-nav-hp-links {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 18px 14px;
+}
+
+/* ====== LOGO ====== */
 .font-pacifico {
-    margin-top: 15px;
-    font-size: 1.1rem;
-    font-family: 'Pacifico', cursive;
-    color: var(--primary);
-    text-align: center;
+  margin-top: 8px;
+  font-size: 1.3rem;
+  font-family: 'Pacifico', cursive;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-.font-playfair {
-    font-family: 'Playfair Display', serif;
+/* ====== TITRES ====== */
+.section-nav-hp-links h3[mat-subheader] {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  margin: 14px 0 10px;
+  letter-spacing: 0.5px;
 }
 
+/* ====== NAV LINKS ====== */
+mat-list-item {
+  border-radius: 10px;
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+mat-list-item:hover {
+  background-color: rgba(128, 114, 117, 0.062);
+  transform: translateX(4px);
+}
+
+mat-list-item.active {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+mat-list-item.active mat-icon {
+  color: #fff;
+}
+
+mat-list-item mat-icon[matListIcon] {
+  color: var(--primary);
+  margin-right: 12px;
+  font-size: 1.3em;
+}
+
+/* ====== DIVIDER ====== */
+mat-divider {
+  margin: 10px 0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ====== BOUTON USER ====== */
+.section-nav-hp-user {
+  width: 100%;
+  padding: 12px 0;
+  border-top: 1px solid rgba(139, 21, 56, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ====== NAV LINK (BOUTON USER) ====== */
 .nav-link {
-    color: var(--secondary);
-    background-color: var(--primary);
-    font-weight: 500;
-    text-decoration: none;
-    transition:
-        color 0.2s,
-        box-shadow 0.2s,
-        transform 0.2s,
-        border 0.2s;
-    min-width: 120px; /* avant 160px */
-    height: 40px; /* avant 52px */
-    border-radius: 14px; /* avant 20px */
-    padding: 0 16px; /* avant 22px */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    font-size: 0.9rem; /* avant 1.10rem */
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border: 2px solid transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* avant 14px */
-    cursor: pointer;
+  color: var(--secondary);
+  background-color: var(--primary);
+  font-weight: 500;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  min-width: 130px;
+  height: 42px;
+  border-radius: 14px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 0.9rem;
+  transition: all 0.25s ease;
 }
 
-.nav-link .icon_username, .nav-link mat-icon {
-    display: flex;
-    align-items: center;
-    font-size: 1.7em; /* avant 1.4em */
-    transition: transform 0.2s;
-    margin-right: 0.1em;
+.nav-link:hover {
+  background-color: #7a1435;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  transform: translateY(-2px);
 }
 
-.nav-link:hover,
-.nav-link:focus {
-    border: 2px solid var(--secondary);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    transform: translateY(-2px) scale(1.03);
-    outline: none;
+.nav-link mat-icon {
+  font-size: 1.6em;
+  transition: transform 0.25s ease;
 }
 
-.nav-link:hover .icon_username,
 .nav-link:hover mat-icon {
-    transform: scale(1.15) rotate(-6deg);
+  transform: scale(1.15) rotate(-5deg);
 }
 
-@media (max-width: 768px) {
-    .nav-link {
-        min-width: 50px;
-        padding: 0 8px;
-        font-size: 0.85rem;
-    }
+/* ====== MENU DÉROULANT (Admin/Profile) ====== */
+.custom-menu,
+::ng-deep .mat-mdc-menu-panel {
+  border-radius: 16px !important;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  width: 140px !important;
+  margin-top: 14px !important;
 }
 
-/* MENU PANEL */
-.custom-menu, ::ng-deep .mat-mdc-menu-panel {
-    border-radius: 20px /* avant 30px */ !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.12) !important;
-    border: 1px solid #eee !important;
-    width: 130px !important; /* avant 155px */
-    margin-top: 20px !important; /* avant 30px */
-    margin-left: 2px !important;
-    
+/* ====== ITEMS DU MENU ====== */
+.custom-menu-item,
+::ng-deep .mat-mdc-menu-item {
+  width: 120px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  color: var(--primary) !important;
+  border-radius: 8px !important;
+  margin: 4px 6px !important;
+  padding: 6px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  transition: all 0.2s ease !important;
 }
 
-/* MENU ITEMS */
-.custom-menu-item, ::ng-deep .mat-mdc-menu-item {
-    width: 115px; /* avant 140px */
-    font-weight: 500 !important;
-    letter-spacing: 0.4px !important;
-    color: var(--primary) !important; 
-    /* background: transparent; */
-    border-radius: 8px !important ; /* avant 12px */
-    margin: 0 6px !important;
-    /* margin-top : 4px !important; */
-    padding: 6px 16px !important; /* avant 10px 24px */
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important; /* avant 12px */
-    transition: background 0.18s, color 0.18s !important;
+.custom-menu-item:hover,
+::ng-deep .mat-mdc-menu-item:hover {
+  background-color: var(--primary) !important;
+  color: var(--secondary) !important;
+  transform: translateX(3px);
 }
 
-.custom-menu-item:hover, ::ng-deep .mat-mdc-menu-item:hover {
-    background-color: var(--primary) !important;
-    color: var(--secondary) !important;
+.custom-menu-item mat-icon,
+::ng-deep .mat-mdc-menu-item .mat-icon {
+  font-size: 1.3em !important;
+  margin-right: 6px !important;
 }
 
-.custom-menu-item mat-icon, ::ng-deep .mat-mdc-menu-item .mat-icon {
-    margin-right: 0 !important;
-    font-size: 1.4em !important; /* légèrement réduit */
-    /* color: inherit; */
-}
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+  .app-sidenav {
+    width: 220px;
+    margin: 12px;
+  }
 
-/* Désactiver */
-.custom-menu-item[disabled], ::ng-deep .mat-mdc-menu-item[disabled] {
-    opacity: 0.4 !important;
-    color: #888 !important;
-}
-
-.custom-menu {
-    padding: 6px 0 !important;  /* avant 8px */
-}
-
-.section-nav-hp-user{
-    width: 100%;
-    padding: 10px 0;
-    border-top: 1px solid rgba(139, 21, 56, 0.1);
-    display: flex;
-    justify-content:center;
+  .nav-link {
+    min-width: 100px;
+    font-size: 0.85rem;
+  }
 }

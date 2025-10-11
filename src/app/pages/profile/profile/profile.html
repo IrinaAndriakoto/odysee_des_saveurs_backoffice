@@ -2,7 +2,7 @@
     @if(loginService.user()){
     <div class="profile-container">
         <form>
-        <h3>User informations</h3>
+            <h3>User informations</h3> <br>
         <mat-form-field>
             <mat-label>Username</mat-label>
             <input matInput value="{{ loginService.user()?.username}}">
@@ -15,7 +15,6 @@
             <mat-label>Last name</mat-label>
             <input matInput value="{{ loginService.user()?.lastName}}">
         </mat-form-field> <br>
-        <button matButton="filled" color="primary" (click)="navigateToHome()">Back</button>
         </form>
     </div>
 }
