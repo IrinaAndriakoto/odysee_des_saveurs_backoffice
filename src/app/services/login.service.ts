@@ -52,8 +52,12 @@ export class LoginService {
   }
 
   setUser(user: any) {
-  this.user = user;
-}
+    this.user.set(user);
+  }
+
+  getUserSync(): UserModel | null {
+    return this.user();
+  }
 
   isLoggedIn() : boolean {
     return !!localStorage.getItem('token');

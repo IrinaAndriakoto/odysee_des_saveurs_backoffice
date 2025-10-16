@@ -9,7 +9,7 @@
         matInput
         name="username"
         [(ngModel)]="user.username"
-        required
+        
       />
     </mat-form-field>
     <br>
@@ -20,7 +20,7 @@
         matInput
         name="firstName"
         [(ngModel)]="user.firstName"
-        required
+        
       />
     </mat-form-field>
     <br>
@@ -31,12 +31,12 @@
         matInput
         name="lastName"
         [(ngModel)]="user.lastName"
-        required
+        
       />
     </mat-form-field>
     <br>
 
-    <button mat-raised-button color="primary" type="submit">
+    <button matButton="filled" type="submit">
       Save Changes
     </button>
   </form>

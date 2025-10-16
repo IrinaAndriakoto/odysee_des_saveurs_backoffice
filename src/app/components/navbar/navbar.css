@@ -1,115 +1,137 @@
-/* ====== SECTION LINKS ====== */
+/* ====== LAYOUT GLOBAL ====== */
 .section-nav-hp-links {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding: 18px 14px;
+  padding: 18px 16px;
 }
 
 /* ====== LOGO ====== */
 .font-pacifico {
   margin-top: 8px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-family: 'Pacifico', cursive;
   color: var(--primary);
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 26px;
 }
 
-/* ====== TITRES ====== */
+.font-pacifico a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+/* ====== TITRES DE SECTIONS ====== */
 .section-nav-hp-links h3[mat-subheader] {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.85rem;
+  font-weight: 450;
+  color: rgba(0, 0, 0, 0.5);
   text-transform: uppercase;
-  margin: 14px 0 10px;
+  margin: 12px 0 8px;
   letter-spacing: 0.5px;
 }
 
-/* ====== NAV LINKS ====== */
+/* ====== LIENS ====== */
 mat-list-item {
   border-radius: 10px;
-  padding: 6px 12px;
   margin-bottom: 4px;
-  transition: all 0.2s ease;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 500;
+  transition: all 0.25s ease;
   cursor: pointer;
+  padding: 0;
 }
 
-mat-list-item:hover {
-  background-color: rgba(128, 114, 117, 0.062);
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 14px;
+  width: 100%;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+mat-list-item:hover .nav-item-content {
+  /* background-color: rgba(128, 114, 117, 0.08); */
   transform: translateX(4px);
 }
 
-mat-list-item.active {
+mat-list-item.active .nav-item-content {
   background-color: var(--primary);
-  color: #fff;
+  color: #fdfae5;
+  transform: none;
 }
 
 mat-list-item.active mat-icon {
-  color: #fff;
+  color: #fdfae5 !important;
 }
 
+/* ====== ICONES ====== */
 mat-list-item mat-icon[matListIcon] {
   color: var(--primary);
-  margin-right: 12px;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
-/* ====== DIVIDER ====== */
+mat-list-item:hover mat-icon {
+  transform: scale(1.1);
+}
+
+/* ====== SEPARATEUR ====== */
 mat-divider {
-  margin: 10px 0;
+  margin: 12px 0;
   border-color: rgba(0, 0, 0, 0.08);
 }
 
-/* ====== BOUTON USER ====== */
+/* ====== SECTION UTILISATEUR ====== */
 .section-nav-hp-user {
-  width: 100%;
-  padding: 12px 0;
+  padding: 14px 0;
   border-top: 1px solid rgba(139, 21, 56, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ====== NAV LINK (BOUTON USER) ====== */
+/* ====== BOUTON UTILISATEUR ====== */
 .nav-link {
-  color: var(--secondary);
-  background-color: var(--primary);
-  font-weight: 500;
-  text-transform: uppercase;
-  border: 2px solid transparent;
-  min-width: 130px;
-  height: 42px;
-  border-radius: 14px;
-  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  color: var(--secondary);
+  background-color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  min-width: 140px;
+  height: 44px;
+  border-radius: 14px;
+  padding: 0 16px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   font-size: 0.9rem;
   transition: all 0.25s ease;
 }
 
 .nav-link:hover {
   background-color: #7a1435;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
 }
 
-.nav-link mat-icon {
+.icon_username {
   font-size: 1.6em;
   transition: transform 0.25s ease;
 }
 
-.nav-link:hover mat-icon {
-  transform: scale(1.15) rotate(-5deg);
+.nav-link:hover .icon_username {
+  transform: scale(1.1);
 }
 
-/* ====== MENU DÉROULANT (Admin/Profile) ====== */
+/* ====== MENU DÉROULANT ====== */
 .custom-menu,
 ::ng-deep .mat-mdc-menu-panel {
   border-radius: 16px !important;
@@ -121,7 +143,6 @@ mat-divider {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* ====== ITEMS DU MENU ====== */
 .custom-menu-item,
 ::ng-deep .mat-mdc-menu-item {
   width: 120px !important;
@@ -144,21 +165,18 @@ mat-divider {
   transform: translateX(3px);
 }
 
-.custom-menu-item mat-icon,
-::ng-deep .mat-mdc-menu-item .mat-icon {
+.custom-menu-item mat-icon {
   font-size: 1.3em !important;
-  margin-right: 6px !important;
 }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
   .app-sidenav {
     width: 220px;
-    margin: 12px;
   }
 
   .nav-link {
-    min-width: 100px;
+    min-width: 110px;
     font-size: 0.85rem;
   }
 }
