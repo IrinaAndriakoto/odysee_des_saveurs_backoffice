@@ -9,7 +9,7 @@
   justify-content: space-between;
   height: calc(100vh - 40px);
   overflow: hidden;
-  /* position: relative; */
+  position: fixed;
 }
 .app-sidenav-container {
   min-height: 100vh;

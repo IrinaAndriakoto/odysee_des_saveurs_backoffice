@@ -20,7 +20,7 @@ import { LoginService } from '../../services/login.service';
 export class Navbar implements OnInit{
   private router = inject(Router);
   loginService = inject(LoginService);
-
+ 
   user: UserModel | null = null;
   ngOnInit(){
     this.loginService.getUser().subscribe({

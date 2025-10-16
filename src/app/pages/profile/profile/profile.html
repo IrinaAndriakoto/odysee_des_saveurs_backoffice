@@ -1,28 +1,43 @@
-<div class="container">
-    @if(loginService.user()){
-    <div class="profile-container">
-        <form>
-            <h3>User informations</h3> <br>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput value="{{ loginService.user()?.username}}">
-        </mat-form-field> <br>
-        <mat-form-field>
-            <mat-label>First name</mat-label>
-            <input matInput value="{{ loginService.user()?.firstName}}">
-        </mat-form-field> <br>
-        <mat-form-field>
-            <mat-label>Last name</mat-label>
-            <input matInput value="{{ loginService.user()?.lastName}}">
-        </mat-form-field> <br>
-        </form>
-    </div>
-}
-@else {
-    <div class="profile-container">
-        <p>User is not logged in</p>
-        <p>Please log in to view your profile.</p>
-        <button class="mat-btn-profile" matButton="filled" (click)="navigateToHome()">Back</button>
-    </div>
-}
+<div class="profile-container">
+  <form (ngSubmit)="updateUser()" #userForm="ngForm">
+    <h3>User informations</h3>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        name="username"
+        [(ngModel)]="user.username"
+        required
+      />
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input
+        matInput
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+      />
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input
+        matInput
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+      />
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary" type="submit">
+      Save Changes
+    </button>
+  </form>
 </div>

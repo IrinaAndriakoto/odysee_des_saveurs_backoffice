@@ -51,6 +51,10 @@ export class LoginService {
     );
   }
 
+  setUser(user: any) {
+  this.user = user;
+}
+
   isLoggedIn() : boolean {
     return !!localStorage.getItem('token');
   }
