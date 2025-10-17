@@ -1,0 +1,96 @@
+<div class="content-hr">
+  <h4>Liste des plats</h4>
+
+  <div class="toolbar">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtrer</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" (click)="addDish()">
+      <mat-icon>add</mat-icon> Ajouter
+    </button>
+  </div>
+ <br>
+  <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8 full-width">
+
+    <!-- Nom -->
+    <ng-container matColumnDef="nom">
+      <th mat-header-cell *matHeaderCellDef> <strong>Name</strong> </th>
+      <td mat-cell *matCellDef="let element"> <strong>{{element.nom}}</strong> </td>
+    </ng-container>
+
+    <!-- Description -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- Prix -->
+    <ng-container matColumnDef="prix">
+      <th mat-header-cell *matHeaderCellDef> Price (€) </th>
+      <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
+    </ng-container>
+
+    <!-- Disponibilité -->
+    <ng-container matColumnDef="dispo">
+      <th mat-header-cell *matHeaderCellDef> Avalaible </th>
+      <td mat-cell *matCellDef="let element"> {{element.dispo ? 'Oui' : 'Non'}} </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let e">
+        <button mat-icon-button color="accent" (click)="editDish(e)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteDish(e.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Bouton d’expansion -->
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions"></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="toggle(element); $event.stopPropagation()" aria-label="expand row"
+                [class.expanded]="isExpanded(element)">
+          <mat-icon>{{isExpanded(element) ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Détail étendu -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+        <div class="example-element-detail" [@detailExpand]="isExpanded(element) ? 'expanded' : 'collapsed'">
+
+        <div class="example-element-diagram">
+            <img src="img/menu/{{element.img}}"
+                alt="{{element.nom}}"
+                class="dish-img">
+        </div>
+
+          <div class="example-element-description">
+            <h5>{{element.nom}}</h5>
+            <p>{{element.description}}</p>
+            <p><strong>Prix :</strong> {{element.prix}} €</p>
+            <p><strong>Disponible :</strong> {{element.dispo ? 'Oui' : 'Non'}}</p>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+        class="example-element-row"
+        [class.example-expanded-row]="isExpanded(element)"
+        (click)="toggle(element)">
+    </tr>
+
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>
+</div>

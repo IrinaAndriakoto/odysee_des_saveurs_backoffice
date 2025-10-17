@@ -1,0 +1,22 @@
+<h3 mat-dialog-title>{{ data.mode === 'add' ? 'Add a table' : 'Update the table' }}</h3>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Table Name</mat-label>
+      <input matInput [(ngModel)]="form.nom_table">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nb Seat</mat-label>
+      <input matInput [(ngModel)]="form.nb_place">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Avalaible</mat-label>
+      <input matInput [(ngModel)]="form.dispo">
+    </mat-form-field>
+
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button matButton="filled" (click)="save()">Save</button>
+  </div>

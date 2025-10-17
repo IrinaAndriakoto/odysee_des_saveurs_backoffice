@@ -1,26 +1,21 @@
-<div class="content-hr">
-    <h4>Gestion du personnel</h4>
+<div class="content-hr"> <br>
+    <h4>Human Ressources</h4>
         <div class="toolbar">
             <mat-form-field appearance="outline">
             <mat-label>Filtrer</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher..." #input>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
             </mat-form-field>
 
             <button matButton="filled" (click)="addPersonnel()">
-            <mat-icon>person_add</mat-icon> Ajouter
+            <mat-icon>person_add</mat-icon> Add
             </button>
         </div>
 
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
 
-        <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
         <ng-container matColumnDef="nom">
-            <th mat-header-cell *matHeaderCellDef> Last Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+            <th mat-header-cell *matHeaderCellDef> <strong>Name</strong> </th>
+            <td mat-cell *matCellDef="let element"> <strong>{{element.nom}}</strong> </td>
         </ng-container>
 
         <ng-container matColumnDef="prenom">
@@ -45,7 +40,7 @@
 
         <ng-container matColumnDef="date_embauche">
             <th mat-header-cell *matHeaderCellDef> Hire Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date_embauche}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.date_embauche | date:'yyyy-MM-dd' }} </td>
         </ng-container>
 
         <ng-container matColumnDef="salaire">
@@ -65,12 +60,64 @@
             </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
         <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+        </table>
+</div>
+
+<div class="content-fr">
+    <h4>Tables</h4>
+        <div class="toolbar">
+            <mat-form-field appearance="outline">
+            <mat-label>Filtrer</mat-label>
+            <input matInput (keyup)="applyFilterTable($event)" placeholder="Search..." #input2>
+            </mat-form-field>
+
+            <button matButton="filled" (click)="addTable()">
+            <mat-icon>add</mat-icon> Add Table
+            </button>
+        </div>
+
+        <table mat-table [dataSource]="dataSourceTable" class="mat-elevation-z8 full-width">
+
+        <ng-container matColumnDef="nom_table">
+            <th mat-header-cell *matHeaderCellDef> <strong>Table Name</strong> </th>
+            <td mat-cell *matCellDef="let element"> <strong>{{element.nom_table}}</strong> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nb_place">
+            <th mat-header-cell *matHeaderCellDef> Nb Seat </th>
+            <td mat-cell *matCellDef="let element"> {{element.nb_place}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dispo">
+            <th mat-header-cell *matHeaderCellDef> Avalaible </th>
+            <td mat-cell *matCellDef="let element"> {{element.dispo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let e">
+                <button mat-icon-button color="accent" (click)="editTable(e)">
+                <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteTable(e.id)">
+                <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedTableColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedTableColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input2.value}}"</td>
         </tr>
         </table>
 </div>

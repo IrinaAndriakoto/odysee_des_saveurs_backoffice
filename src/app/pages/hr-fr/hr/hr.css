@@ -1,8 +1,59 @@
-table {
-  width: 100%;
-}
 
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+/* ====== TABLE STYLE ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ====== TABLE ROWS ====== */
+tr.mat-mdc-row {
+  transition: background-color 0.25s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+
+tr.mat-mdc-row:hover {
+  background-color: rgba(67, 70, 84, 0.08); /* léger bleu Material */
+  transform: scale(1.005);
+}
+
+/* ====== HEADER ====== */
+th.mat-mdc-header-cell {
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ====== TOOLBAR ====== */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ====== CONTAINER ====== */
+.content-hr,
+.content-fr {
+  /* background: rgba(255, 255, 255, 0.05); */
+  /* backdrop-filter: blur(8px); */
+  /* -webkit-backdrop-filter: blur(8px); */
+  /* border-radius: 14px; */
+  padding: 20px;
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); */
+  margin-bottom: 32px;
+  transition: box-shadow 0.3s ease;
+}
+
+/* ====== TEXT COLOR ====== */
+h4 {
+  font-weight: 600;
+  color: #2f2f2f;
+  margin-bottom: 14px;
 }

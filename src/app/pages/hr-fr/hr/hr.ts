@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { HrDialogComponent } from './hr-dialog.component/hr-dialog.component';
+import { TablesService } from '../../../services/tables.services';
+import { TableDialogComponent } from './table-dialog.component/table-dialog.component';
 
 @Component({
   selector: 'app-hr',
@@ -19,14 +21,19 @@ import { HrDialogComponent } from './hr-dialog.component/hr-dialog.component';
 
 export class Hr implements OnInit {
   private personnelsService = inject(PersonnelsService);
+  private tablesService = inject(TablesService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   
-  displayedColumns: string[] = ['id','nom','prenom','adresse','numero_telephone','role','date_embauche','salaire','actions'];
+  displayedColumns: string[] = ['nom','prenom','adresse','numero_telephone','role','date_embauche','salaire','actions'];
   dataSource = new MatTableDataSource<any>([]);
+
+  displayedTableColumns: string[] = ['nom_table','nb_place','dispo','actions'];
+  dataSourceTable = new MatTableDataSource<any>([]);
 
   ngOnInit() {
     this.loadPersonnels();
+    this.loadTables();
   }
 
   loadPersonnels() {
@@ -35,6 +42,15 @@ export class Hr implements OnInit {
         this.dataSource.data = data;
       },
       error: (err) => console.error('Erreur lors du chargement du personnel :', err)
+    });
+  }
+
+  loadTables(){
+    this.tablesService.getAllTables().subscribe({
+      next: (data: any) => {
+        this.dataSourceTable.data = data;
+      },
+      error: (err) => console.error('Erreur lors du chargement des tables :', err)
     });
   }
 
@@ -48,8 +64,26 @@ export class Hr implements OnInit {
       if (result) {
         this.personnelsService.addPersonnel(result).subscribe({
           next: () => {
-            this.snackBar.open('Personnel ajouté', 'Fermer', { duration: 2000 });
+            this.snackBar.open('Personnel added', 'OK', { duration: 2000 });
             this.loadPersonnels();
+          }
+        });
+      }
+    });
+  }
+
+  addTable(){
+    const dialogRef = this.dialog.open(TableDialogComponent, {
+      width: '400px',
+      data: { mode: 'add' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tablesService.addTable(result).subscribe({
+          next: () => {
+            this.snackBar.open('Table added', 'OK', { duration: 2000 });
+            this.loadTables();
           }
         });
       }
@@ -74,12 +108,41 @@ export class Hr implements OnInit {
     });
   }
 
+  editTable(table: any) {
+    const dialogRef = this.dialog.open(TableDialogComponent, {
+      width: '400px',
+      data: { mode: 'edit', table }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tablesService.updateTable(result).subscribe({
+          next: () => {
+            this.snackBar.open('Table modifiée', 'Fermer', { duration: 2000 });
+            this.loadTables();
+          }
+        });
+      }
+    });
+  }
+
   deletePersonnel(id: number) {
-    if (confirm('Supprimer ce personnel ?')) {
+    if (confirm('Delete this personnel ?')) {
       this.personnelsService.deletePersonnel(id).subscribe({
         next: () => {
-          this.snackBar.open('Personnel supprimé', 'Fermer', { duration: 2000 });
+          this.snackBar.open('Personnel deleted', 'Close', { duration: 2000 });
           this.loadPersonnels();
+        }
+      });
+    }
+  }
+
+  deleteTable(id: number) {
+    if (confirm('Delete this table ?')) {
+      this.tablesService.deleteTable(id).subscribe({
+        next: () => {
+          this.snackBar.open('Table deleted', 'Close', { duration: 2000 });
+          this.loadTables();
         }
       });
     }
@@ -88,5 +151,10 @@ export class Hr implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterTable(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceTable.filter = filterValue.trim().toLowerCase();
   }
 }

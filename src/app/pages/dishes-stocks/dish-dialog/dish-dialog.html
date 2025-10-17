@@ -1,0 +1,32 @@
+<h3 mat-dialog-title>{{ data.mode === 'add' ? 'Add a dish' : 'Update the dish' }}</h3>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="form.nom">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="form.description" style="height:100px;"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput [(ngModel)]="form.prix">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Photo</mat-label>
+      <input matInput [(ngModel)]="form.img">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Avalaible</mat-label>
+      <input matInput [(ngModel)]="form.dispo">
+    </mat-form-field>
+
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button matButton="filled" (click)="save()">Save</button>
+  </div>

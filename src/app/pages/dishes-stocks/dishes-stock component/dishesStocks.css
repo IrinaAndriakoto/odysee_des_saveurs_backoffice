@@ -1,0 +1,78 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h4 {
+  font-weight: 600;
+  color: #2f2f2f;
+  margin-bottom: 14px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+th.mat-mdc-header-cell {
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.example-element-row {
+  cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+
+}
+
+.example-element-row:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  transform: scale(1.005);
+
+}
+
+.example-element-detail {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: transparent;
+  /* background: #fafafa; */
+}
+
+.example-element-diagram {
+  flex: 0 0 100px;
+  text-align: center;
+  margin-right: 24px;
+}
+
+.dish-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.example-element-description {
+  flex: 1;
+}
+
+.example-element-description h5 {
+  margin: 0 0 6px;
+  font-weight: 600;
+  color: #181818;
+}
+
+.example-element-description p {
+  margin: 2px 0;
+}
+
+.example-detail-row {
+  height: 0;
+}
