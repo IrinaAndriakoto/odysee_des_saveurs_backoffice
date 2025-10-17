@@ -24,6 +24,7 @@ th.mat-mdc-header-cell {
   text-transform: uppercase;
 }
 
+
 .example-element-row {
   cursor: pointer;
     transition: background-color 0.25s ease, transform 0.15s ease;

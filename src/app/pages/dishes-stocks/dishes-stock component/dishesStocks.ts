@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { StockDialog } from '../stock-dialog/stock-dialog';
 
 @Component({
   selector: 'app-dishes',
@@ -26,7 +27,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class DishesStocks {
   private dishesService = inject(DishesService);
-  // private tablesService = inject(TablesService);
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   
@@ -36,8 +36,8 @@ export class DishesStocks {
 
   expandedElement: any | null;
 
-  // displayedTableColumns: string[] = ['nom_table','nb_place','dispo','actions'];
-  // dataSourceTable = new MatTableDataSource<any>([]);
+  displayedStockColumns: string[] = ['produitNom','quantite','unite','prix','dateInsertion','actions'];
+  dataSourceStock = new MatTableDataSource<any>([]);
 
 
   toggle(element: any) {
@@ -50,7 +50,7 @@ export class DishesStocks {
 
   ngOnInit() {
     this.loadDishes();
-    // this.loadTables();
+    this.loadStocks();
   }
 
   loadDishes() {
@@ -62,14 +62,14 @@ export class DishesStocks {
     });
   }
 
-  // loadTables(){
-  //   this.tablesService.getAllTables().subscribe({
-  //     next: (data: any) => {
-  //       this.dataSourceTable.data = data;
-  //     },
-  //     error: (err) => console.error('Erreur lors du chargement des tables :', err)
-  //   });
-  // }
+  loadStocks(){
+    this.dishesService.getAllStocks().subscribe({
+      next: (data: any) => {
+        this.dataSourceStock.data = data;
+      },
+      error: (err) => console.error('Erreur lors du chargement des stocks :', err)
+    });
+  }
 
   addDish() {
     const dialogRef = this.dialog.open(DishDialog, {
@@ -89,23 +89,23 @@ export class DishesStocks {
     });
   }
 
-  // addTable(){
-  //   const dialogRef = this.dialog.open(TableDialogComponent, {
-  //     width: '400px',
-  //     data: { mode: 'add' }
-  //   });
+  addStock(){
+    const dialogRef = this.dialog.open(StockDialog, {
+      width: '400px',
+      data: { mode: 'add' }
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.tablesService.addTable(result).subscribe({
-  //         next: () => {
-  //           this.snackBar.open('Table added', 'OK', { duration: 2000 });
-  //           this.loadTables();
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dishesService.addStock(result).subscribe({
+          next: () => {
+            this.snackBar.open('Product added', 'OK', { duration: 2000 });
+            this.loadStocks();
+          }
+        });
+      }
+    });
+  }
 
   editDish(dish: any) {
     const dialogRef = this.dialog.open(DishDialog, {
@@ -125,23 +125,24 @@ export class DishesStocks {
     });
   }
 
-  // editTable(table: any) {
-  //   const dialogRef = this.dialog.open(TableDialogComponent, {
-  //     width: '400px',
-  //     data: { mode: 'edit', table }
-  //   });
+  editStock(stock: any) {
+    const dialogRef = this.dialog.open(StockDialog, {
+      width: '400px',
+      data: { mode: 'edit', stock }
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //       this.tablesService.updateTable(result).subscribe({
-  //         next: () => {
-  //           this.snackBar.open('Table modifiée', 'Fermer', { duration: 2000 });
-  //           this.loadTables();
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dishesService.updateStock(result).subscribe({
+          next: () => {
+            this.snackBar.open('Product updated', 'OK', { duration: 2000 });
+            this.loadStocks();
+          }, 
+          error: (err) => console.error('Erreur lors de la mise à jour du stock :', err)
+        });
+      }
+    });
+  }
 
   deleteDish(id: number) {
     if (confirm('Delete this dish ?')) {
@@ -154,26 +155,26 @@ export class DishesStocks {
     }
   }
 
-  // deleteTable(id: number) {
-  //   if (confirm('Delete this table ?')) {
-  //     this.tablesService.deleteTable(id).subscribe({
-  //       next: () => {
-  //         this.snackBar.open('Table deleted', 'Close', { duration: 2000 });
-  //         this.loadTables();
-  //       }
-  //     });
-  //   }
-  // }
+  deleteStock(id: number) {
+    if (confirm('Delete this product ?')) {
+      this.dishesService.deleteStock(id).subscribe({
+        next: () => {
+          this.snackBar.open('Product deleted', 'Close', { duration: 2000 });
+          this.loadStocks();
+        }
+      });
+    }
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // applyFilterTable(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSourceTable.filter = filterValue.trim().toLowerCase();
-  // }
+  applyFilterStock(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceStock.filter = filterValue.trim().toLowerCase();
+  }
 
   
 }

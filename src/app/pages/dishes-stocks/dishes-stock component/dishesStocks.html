@@ -1,5 +1,5 @@
 <div class="content-hr">
-  <h4>Liste des plats</h4>
+  <h4>Dishes</h4>
 
   <div class="toolbar">
     <mat-form-field appearance="outline">
@@ -35,7 +35,7 @@
     <!-- Disponibilité -->
     <ng-container matColumnDef="dispo">
       <th mat-header-cell *matHeaderCellDef> Avalaible </th>
-      <td mat-cell *matCellDef="let element"> {{element.dispo ? 'Oui' : 'Non'}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dispo ? 'Yes' : 'No'}} </td>
     </ng-container>
 
     <!-- Actions -->
@@ -77,7 +77,7 @@
             <h5>{{element.nom}}</h5>
             <p>{{element.description}}</p>
             <p><strong>Prix :</strong> {{element.prix}} €</p>
-            <p><strong>Disponible :</strong> {{element.dispo ? 'Oui' : 'Non'}}</p>
+            <p><strong>Avalaible :</strong> {{element.dispo ? 'Yes' : 'No'}}</p>
           </div>
         </div>
       </td>
@@ -93,4 +93,66 @@
 
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
   </table>
+</div>
+<br> <br>
+<div class="content-fr">
+    <h4>Stocks</h4>
+        <div class="toolbar">
+            <mat-form-field appearance="outline">
+            <mat-label>Filtrer</mat-label>
+            <input matInput (keyup)="applyFilterStock($event)" placeholder="Search..." #input2>
+            </mat-form-field>
+
+            <button matButton="filled" (click)="addStock()">
+            <mat-icon>add</mat-icon> Add Stock
+            </button>
+        </div>
+ <br>
+        <table mat-table [dataSource]="dataSourceStock" class="mat-elevation-z8 full-width">
+
+        <ng-container matColumnDef="produitNom">
+            <th mat-header-cell *matHeaderCellDef> <strong>Product Name</strong> </th>
+            <td mat-cell *matCellDef="let element"> <strong>{{element.produitNom}}</strong> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantite">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantite}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unite">
+            <th mat-header-cell *matHeaderCellDef> Unity </th>
+            <td mat-cell *matCellDef="let element"> {{element.unite}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prix">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.prix}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateInsertion">
+            <th mat-header-cell *matHeaderCellDef> Insertion Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateInsertion | date:'yyyy-MM-dd' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let e">
+                <button mat-icon-button color="accent" (click)="editStock(e)">
+                <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteStock(e.id)">
+                <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedStockColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedStockColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input2.value}}"</td>
+        </tr>
+        </table>
 </div>
