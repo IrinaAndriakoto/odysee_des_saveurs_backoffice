@@ -1,0 +1,45 @@
+<h3 mat-dialog-title>{{ data.mode === 'add' ? 'Ajouter un personnel' : 'Modifier le personnel' }}</h3>
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput [(ngModel)]="form.nom">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="form.prenom">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput [(ngModel)]="form.adresse">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="form.numero_telephone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Role</mat-label>
+      <input matInput [(ngModel)]="form.role">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="form.date_embauche">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Salaire</mat-label>
+      <input matInput [(ngModel)]="form.salaire">
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Annuler</button>
+    <button matButton="filled" (click)="save()">Enregistrer</button>
+  </div>

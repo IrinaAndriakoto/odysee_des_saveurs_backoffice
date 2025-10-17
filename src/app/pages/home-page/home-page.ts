@@ -19,7 +19,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
       MatButtonModule, 
       MatIconModule, 
       MatMenuModule,
-      Hr,
       Navbar,
       MatSidenavModule,
       MatListModule,
