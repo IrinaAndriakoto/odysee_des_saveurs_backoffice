@@ -6,6 +6,7 @@ import { isLoggedInGuard } from './guards/is-logged-in-guard';
 import { Profile } from './pages/profile/profile/profile';
 import { Hr } from './pages/hr-fr/hr/hr';
 import { DishesStocks } from './pages/dishes-stocks/dishes-stock component/dishesStocks';
+import { Reservations } from './pages/reservations/reservations';
 
 export const routes: Routes = [
     {   
@@ -26,7 +27,8 @@ export const routes: Routes = [
           { path: '', redirectTo: 'hr-fr', pathMatch: 'full' }, // optionnel : page par défaut
           { path: 'profile', component: Profile },
           { path: 'hr-fr', component: Hr },
-          { path: 'dish-stock', component: DishesStocks }
+          { path: 'dish-stock', component: DishesStocks },
+          { path: 'reservations', component: Reservations }
         ]
     }
 ];
