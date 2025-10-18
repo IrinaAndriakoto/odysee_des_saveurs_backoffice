@@ -28,7 +28,7 @@ export class Reservations implements OnInit {
   // private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
   
-  displayedColumns: string[] = ['fullname','email','phone','partySize','preferedDate','preferedTime','specialRequests','actions'];
+  displayedColumns: string[] = ['id','fullname','email','phone','preferredDate','actions'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   dataSource = new MatTableDataSource<any>([]);
 
@@ -73,6 +73,21 @@ export class Reservations implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  // helper pour formatter le statut et retourner icone / libellé / couleur
+  getStatusDisplay(status: any) {
+    const s = (status ?? '').toString().toUpperCase();
+    if (['PENDING', 'EN_ATTENTE', 'WAITING', 'ATTENTE'].includes(s)) {
+      return { icon: 'hourglass_top', label: 'En attente', color: 'warn' };
+    }
+    if (['APPROVED', 'VALIDATED', 'VALIDEE', 'VALIDÉE'].includes(s)) {
+      return { icon: 'check_circle', label: 'Validée', color: 'primary' };
+    }
+    if (['REJECTED', 'REFUSE', 'REFUSEE', 'REFUSÉE', 'REFUSED'].includes(s)) {
+      return { icon: 'cancel', label: 'Refusée', color: 'warn' };
+    }
+    return { icon: 'help_outline', label: status ?? '-', color: '' };
   }
 
 }
